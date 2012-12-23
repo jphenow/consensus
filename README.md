@@ -42,3 +42,10 @@ enough that scanning them is not too strenuous.
 
 The visual design of this app needs to prioritize for reading and
 understanding technical text and discussions.
+
+
+## Development
+
+Development of this app will be driven by contributions to resolve open
+issues. Needed tasks will be described by issues associated with milestones.
+Milestones organize and prioritize work.
