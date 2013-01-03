@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130102201343) do
+ActiveRecord::Schema.define(version: 20130103043801) do
+
+  create_table "documents", force: true do |t|
+    t.text     "abstract"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", force: true do |t|
+    t.string   "kind",       default: "documentation"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -31,6 +45,13 @@ ActiveRecord::Schema.define(version: 20130102201343) do
 
   create_table "proposals", force: true do |t|
     t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sections", force: true do |t|
+    t.integer  "document_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
