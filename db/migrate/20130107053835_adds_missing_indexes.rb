@@ -7,11 +7,11 @@ class AddsMissingIndexes < ActiveRecord::Migration
     add_index :links, :proposal_id
     add_index :paragraphs, :section_id
     add_index :paragraphs, :position
+    add_column :participants, :organization_id, :integer
     add_index :participants, :organization_id
     add_index :proposals, :organization_id
     add_column :sections, :proposal_id, :integer
     add_index :sections, :proposal_id
-    add_column :sections, :position, :integer
     add_index :sections, :position
     add_index :sentences, :paragraph_id
     add_column :sentences, :position, :integer
