@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130104175419) do
+ActiveRecord::Schema.define(version: 20130108110103) do
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -21,19 +21,30 @@ ActiveRecord::Schema.define(version: 20130104175419) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type", "commentable_id", "id"], name: "index_comments_on_commentable_type_and_commentable_id_and_id", unique: true
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
+
   create_table "documents", force: true do |t|
     t.text     "abstract"
     t.text     "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proposal_id"
   end
 
+  add_index "documents", ["proposal_id"], name: "index_documents_on_proposal_id"
+
   create_table "links", force: true do |t|
-    t.string   "kind",       default: "documentation"
+    t.string   "kind",        default: "documentation"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proposal_id"
   end
+
+  add_index "links", ["proposal_id"], name: "index_links_on_proposal_id"
 
   create_table "organizations", force: true do |t|
     t.string   "name"
@@ -49,15 +60,20 @@ ActiveRecord::Schema.define(version: 20130104175419) do
     t.datetime "updated_at"
   end
 
+  add_index "paragraphs", ["position"], name: "index_paragraphs_on_position"
+  add_index "paragraphs", ["section_id"], name: "index_paragraphs_on_section_id"
+
   create_table "participants", force: true do |t|
-    t.integer  "organization_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
+
+  add_index "participants", ["organization_id"], name: "index_participants_on_organization_id"
 
   create_table "proposals", force: true do |t|
     t.integer  "organization_id"
@@ -65,19 +81,30 @@ ActiveRecord::Schema.define(version: 20130104175419) do
     t.datetime "updated_at"
   end
 
+  add_index "proposals", ["organization_id"], name: "index_proposals_on_organization_id"
+
   create_table "sections", force: true do |t|
     t.integer  "document_id"
     t.string   "title"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "proposal_id"
   end
+
+  add_index "sections", ["position"], name: "index_sections_on_position"
+  add_index "sections", ["proposal_id"], name: "index_sections_on_proposal_id"
 
   create_table "sentences", force: true do |t|
     t.integer  "paragraph_id"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
+
+  add_index "sentences", ["paragraph_id"], name: "index_sentences_on_paragraph_id"
+  add_index "sentences", ["position"], name: "index_sentences_on_position"
 
   create_table "votes", force: true do |t|
     t.integer  "participant_id"
@@ -86,5 +113,9 @@ ActiveRecord::Schema.define(version: 20130104175419) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "votes", ["participant_id"], name: "index_votes_on_participant_id"
+  add_index "votes", ["proposal_id"], name: "index_votes_on_proposal_id"
+  add_index "votes", ["value"], name: "index_votes_on_value"
 
 end
