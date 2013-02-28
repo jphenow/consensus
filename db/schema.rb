@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 20130108110103) do
   add_index "paragraphs", ["section_id"], name: "index_paragraphs_on_section_id"
 
   create_table "participants", force: true do |t|
-    t.integer  "organization_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   add_index "participants", ["organization_id"], name: "index_participants_on_organization_id"
