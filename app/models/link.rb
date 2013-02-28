@@ -8,7 +8,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
 class Link < ActiveRecord::Base
 
   belongs_to :proposal

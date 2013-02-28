@@ -7,7 +7,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
 class Organization < ActiveRecord::Base
 
   has_many :participants

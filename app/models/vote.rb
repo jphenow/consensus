@@ -9,7 +9,6 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #
-
 class Vote < ActiveRecord::Base
   belongs_to :proposal
   belongs_to :participant

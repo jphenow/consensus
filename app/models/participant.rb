@@ -11,7 +11,6 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
-
 class Participant < ActiveRecord::Base
   belongs_to :organization
   has_many :votes

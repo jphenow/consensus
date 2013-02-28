@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 # == Schema Information
 #
 # Table name: links
@@ -8,9 +10,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
-require 'spec_helper'
-
 describe Link do
   pending "add some examples to (or delete) #{__FILE__}"
 end

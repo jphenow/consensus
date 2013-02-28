@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 # == Schema Information
 #
 # Table name: votes
@@ -9,9 +11,6 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #
-
-require 'spec_helper'
-
 describe Vote do
   pending "add some examples to (or delete) #{__FILE__}"
 end

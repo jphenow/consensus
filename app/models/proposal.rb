@@ -7,7 +7,6 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #
-
 class Proposal < ActiveRecord::Base
   belongs_to :organization
   has_one :document

@@ -1,3 +1,4 @@
+require 'spec_helper'
 # == Schema Information
 #
 # Table name: organizations
@@ -7,9 +8,6 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
-
-require 'spec_helper'
-
 describe Organization do
   pending "add some examples to (or delete) #{__FILE__}"
 end
